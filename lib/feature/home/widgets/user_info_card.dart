@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:user_app/core/theme/app_colors.dart';
-import 'package:user_app/data/demo_data/demo_user.dart';
 import 'package:user_app/data/model/User_model.dart';
 
 import '../../../utils/generated/l10n.dart';
@@ -15,8 +14,28 @@ class UserInfoCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = TextTheme.of(context);
     final colorScheme = Theme.of(context).colorScheme;
-    final demo = getDemoUse();
-    final str = S.of(context);
+    final List<Map<String, dynamic>> infoMap = [
+      {
+        "icon": Icons.email,
+        "key": S.of(context).titleDigitalCorrespondence,
+        "value": user.email,
+      },
+      {
+        "icon": Icons.call,
+        "key": S.of(context).titleDirectLine,
+        "value": user.phone,
+      },
+      {
+        "icon": Icons.location_city_sharp,
+        "key": S.of(context).titlePrimaryOffice,
+        "value": user.address?.street,
+      },
+      {
+        "icon": Icons.public,
+        "key": S.of(context).titleWebsite,
+        "value": user.website,
+      },
+    ];
     return Container(
       margin: EdgeInsets.all(18).r,
       width: .maxFinite,
@@ -35,34 +54,14 @@ class UserInfoCardWidget extends StatelessWidget {
           ),
           Text("@${user.username}", style: textTheme.titleLarge),
           buildCompanyInfo(colorScheme, context, textTheme),
-
-          buildInfoRow(
-            context,
-            textTheme,
-            icons: Icons.email,
-            key: S.of(context).titleDigitalCorrespondence,
-            value: user.email,
-          ),
-          buildInfoRow(
-            context,
-            textTheme,
-            icons: Icons.call,
-            key: S.of(context).titleDirectLine,
-            value: user.phone,
-          ),
-          buildInfoRow(
-            context,
-            textTheme,
-            icons: Icons.email,
-            key: S.of(context).titlePrimaryOffice,
-            value: "${user.address?.street}",
-          ),
-          buildInfoRow(
-            context,
-            textTheme,
-            icons: Icons.public,
-            key: S.of(context).titleWebsite,
-            value: user.website,
+          ...infoMap.map(
+            (element) => buildInfoRow(
+              context,
+              textTheme,
+              icons: element['icon'],
+              key: element['key'],
+              value: element['value'],
+            ),
           ),
         ],
       ),

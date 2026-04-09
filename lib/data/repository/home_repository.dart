@@ -9,7 +9,8 @@ class HomeRepository {
     if (response.statusCode != 200) {
       return null;
     }
-    UserModel userModel = UserModel.fromJson(response.data);
-    return userModel;
+    print("resposnse : ${response.data.runtimeType}");
+    // UserModel userModel = UserModel.fromJson(response.data);
+    return null;
   }
 }
