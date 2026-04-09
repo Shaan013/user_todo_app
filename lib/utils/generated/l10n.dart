@@ -53,6 +53,76 @@ class S {
   static S? maybeOf(BuildContext context) {
     return Localizations.of<S>(context, S);
   }
+
+  /// `CREATE NETWORK`
+  String get titleCreateNetwork {
+    return Intl.message(
+      'CREATE NETWORK',
+      name: 'titleCreateNetwork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Executive Network`
+  String get headingExecutiveNetwork {
+    return Intl.message(
+      'Executive Network',
+      name: 'headingExecutiveNetwork',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Executive Directory`
+  String get titleExecutiveDirectory {
+    return Intl.message(
+      'Executive Directory',
+      name: 'titleExecutiveDirectory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unknown`
+  String get errorUnknown {
+    return Intl.message('Unknown', name: 'errorUnknown', desc: '', args: []);
+  }
+
+  /// `DIGITAL CORRESPONDENCE`
+  String get titleDigitalCorrespondence {
+    return Intl.message(
+      'DIGITAL CORRESPONDENCE',
+      name: 'titleDigitalCorrespondence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `DIRECT LINE`
+  String get titleDirectLine {
+    return Intl.message(
+      'DIRECT LINE',
+      name: 'titleDirectLine',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `PRIMARY OFFICE`
+  String get titlePrimaryOffice {
+    return Intl.message(
+      'PRIMARY OFFICE',
+      name: 'titlePrimaryOffice',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `WEBSITE`
+  String get titleWebsite {
+    return Intl.message('WEBSITE', name: 'titleWebsite', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

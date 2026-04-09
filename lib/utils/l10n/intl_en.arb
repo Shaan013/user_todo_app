@@ -1,1 +1,10 @@
-{}
+{
+  "titleCreateNetwork": "CREATE NETWORK",
+  "headingExecutiveNetwork": "Executive Network",
+  "titleExecutiveDirectory": "Executive Directory",
+  "errorUnknown": "Unknown",
+  "titleDigitalCorrespondence": "DIGITAL CORRESPONDENCE",
+  "titleDirectLine": "DIRECT LINE",
+  "titlePrimaryOffice": "PRIMARY OFFICE",
+  "titleWebsite": "WEBSITE"
+}

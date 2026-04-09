@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:user_app/core/theme/app_colors.dart';
 
 class AppTextTheme {
   AppTextTheme._();
@@ -30,21 +31,21 @@ class AppTextTheme {
       fontSize: 32.sp,
       fontWeight: FontWeight.w600,
       overflow: TextOverflow.ellipsis,
-      color: Colors.black,
+      color: AppColors.blue,
     ),
 
     headlineMedium: TextStyle(
       fontSize: 28.sp,
       fontWeight: FontWeight.w600,
       overflow: TextOverflow.ellipsis,
-      color: Colors.black,
+      color: AppColors.blue,
     ),
 
     headlineSmall: TextStyle(
       fontSize: 24.sp,
       fontWeight: FontWeight.w600,
       overflow: TextOverflow.ellipsis,
-      color: Colors.black,
+      color: AppColors.blue,
     ),
 
     titleLarge: TextStyle(
