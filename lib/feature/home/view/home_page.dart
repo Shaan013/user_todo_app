@@ -1,9 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:user_app/core/theme/app_colors.dart';
-import 'package:user_app/data/demo_data/demo_user.dart';
+import 'package:user_app/data/model/User_model.dart';
+import 'package:user_app/data/repository/home_repository.dart';
 import 'package:user_app/feature/home/widgets/user_info_card.dart';
 
-import '../../../data/repository/home_repository.dart';
 import '../../../utils/generated/l10n.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,38 +16,103 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // Future<UserModel>
+  late Future<List<UserModel>?> _listUser;
 
-  void apiCall()async{
-    HomeRepository repo = HomeRepository();
-     final res = await  repo.getAllUserModel();
+  @override
+  void initState() {
+    super.initState();
+    _listUser = apiCall();
+  }
 
+  Future<List<UserModel>?> apiCall() async {
+    log("message :  i am in home page ");
+    HomeRepository homeRepository = HomeRepository();
+    final List<UserModel>? listUser = await homeRepository.getAllUserModel();
+    log("here you list of user : ${listUser?.first.toString()}");
+    return listUser;
   }
 
   @override
   Widget build(BuildContext context) {
     apiCall();
     final textTheme = TextTheme.of(context);
-    final colorScheme = Theme.of(context).colorScheme;
+    // final colorScheme = Theme.of(context).colorScheme;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.white,
-        title: Text(
-          S.of(context).titleExecutiveDirectory,
-          style: textTheme.headlineLarge,
+      appBar: buildAppBar(context, textTheme),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              S.of(context).titleCreateNetwork,
+              style: textTheme.titleMedium,
+            ),
+            Text(
+              S.of(context).headingExecutiveNetwork,
+              style: textTheme.headlineMedium,
+            ),
+            buildFutureBuilder(),
+          ],
         ),
       ),
-      body: Column(
-        children: [
-          Text(S.of(context).titleCreateNetwork, style: textTheme.titleMedium),
-          Text(
-            S.of(context).headingExecutiveNetwork,
-            style: textTheme.headlineMedium,
-          ),
+    );
+  }
 
-          UserInfoCardWidget(user: getDemoUse()),
-        ],
+  AppBar buildAppBar(BuildContext context, TextTheme textTheme) {
+    return AppBar(
+      actionsPadding: EdgeInsets.all(12),
+      backgroundColor: AppColors.white,
+      title: Text(
+        S.of(context).titleExecutiveDirectory,
+        style: textTheme.headlineLarge,
       ),
+      actions: [
+        GestureDetector(
+          onTap: (){
+            print("object");
+          },
+          child: Icon(Icons.task),
+        )
+      ],
+    );
+  }
+
+  FutureBuilder<List<UserModel>?> buildFutureBuilder() {
+    return FutureBuilder(
+      future: _listUser,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        if (snapshot.hasError) {
+          return Center(
+            child: Text(
+              "${S.of(context).msgApiCouldNotFetchDate} ${snapshot.error.toString()}",
+            ),
+          );
+        }
+
+        if (snapshot.hasData) {
+          final List<UserModel>? userList = snapshot.data;
+          if (userList == null) {
+            return Center(child: Text(S.of(context).erroryouDateIsNull));
+          } else {
+            return buildListView(userList);
+          }
+        }
+        return Center(child: Text(S.of(context).errorSomethingWentWrong));
+      },
+    );
+  }
+
+  ListView buildListView(List<UserModel> userList) {
+    return ListView.builder(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: userList.length,
+      itemBuilder: (context, index) {
+        final user = userList[index];
+        return UserInfoCardWidget(user: user);
+      },
     );
   }
 }

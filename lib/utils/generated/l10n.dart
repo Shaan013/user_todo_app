@@ -123,6 +123,36 @@ class S {
   String get titleWebsite {
     return Intl.message('WEBSITE', name: 'titleWebsite', desc: '', args: []);
   }
+
+  /// `Api Could Not Fetch Date`
+  String get msgApiCouldNotFetchDate {
+    return Intl.message(
+      'Api Could Not Fetch Date',
+      name: 'msgApiCouldNotFetchDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Something went wrong`
+  String get errorSomethingWentWrong {
+    return Intl.message(
+      'Something went wrong',
+      name: 'errorSomethingWentWrong',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You Date is Null`
+  String get erroryouDateIsNull {
+    return Intl.message(
+      'You Date is Null',
+      name: 'erroryouDateIsNull',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

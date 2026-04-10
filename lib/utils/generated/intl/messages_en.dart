@@ -22,9 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+    "errorSomethingWentWrong": MessageLookupByLibrary.simpleMessage(
+      "Something went wrong",
+    ),
     "errorUnknown": MessageLookupByLibrary.simpleMessage("Unknown"),
+    "erroryouDateIsNull": MessageLookupByLibrary.simpleMessage(
+      "You Date is Null",
+    ),
     "headingExecutiveNetwork": MessageLookupByLibrary.simpleMessage(
       "Executive Network",
+    ),
+    "msgApiCouldNotFetchDate": MessageLookupByLibrary.simpleMessage(
+      "Api Could Not Fetch Date",
     ),
     "titleCreateNetwork": MessageLookupByLibrary.simpleMessage(
       "CREATE NETWORK",

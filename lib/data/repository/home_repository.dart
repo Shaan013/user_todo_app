@@ -1,16 +1,23 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:user_app/data/model/User_model.dart';
 import 'package:user_app/data/network/network_service.dart';
 
 class HomeRepository {
-  Future<UserModel?> getAllUserModel() async {
+  Future<List<UserModel>?> getAllUserModel() async {
     NetworkService networkService = NetworkService();
-    Response response = await networkService.getAllUsers();
+    final Response response = await networkService.getAllUsers();
+
     if (response.statusCode != 200) {
+      log(" SUTATUS : ${response.statusCode}");
       return null;
     }
-    print("resposnse : ${response.data.runtimeType}");
-    // UserModel userModel = UserModel.fromJson(response.data);
-    return null;
+    final List data = response.data;
+    final List<UserModel> listOfUser = data
+        .map((user) => UserModel.fromJson(user))
+        .toList();
+    log(data.runtimeType.toString());
+    return listOfUser;
   }
 }

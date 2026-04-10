@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:dio_pretty_logger/dio_pretty_logger.dart';
+import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioClient {
   final Dio dio;
@@ -10,13 +10,22 @@ class DioClient {
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "User-Agent": "Mozilla/5.0",
           },
           baseUrl: "https://jsonplaceholder.typicode.com",
           connectTimeout: Duration(seconds: 10),
           receiveTimeout: Duration(seconds: 10),
         ),
       ) {
-    dio.interceptors.add(prettyInterceptorsWrapper);
+    dio.interceptors.add(
+      PrettyDioLogger(
+        requestHeader: true,
+        requestBody: true,
+        responseHeader: false,
+
+        responseBody: false,
+        error: true,
+        compact: true,
+      ),
+    );
   }
 }

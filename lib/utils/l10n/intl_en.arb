@@ -6,5 +6,8 @@
   "titleDigitalCorrespondence": "DIGITAL CORRESPONDENCE",
   "titleDirectLine": "DIRECT LINE",
   "titlePrimaryOffice": "PRIMARY OFFICE",
-  "titleWebsite": "WEBSITE"
+  "titleWebsite": "WEBSITE",
+  "msgApiCouldNotFetchDate": "Api Could Not Fetch Date",
+  "errorSomethingWentWrong": "Something went wrong",
+  "erroryouDateIsNull": "You Date is Null"
 }
