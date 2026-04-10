@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'Address.dart';
 import 'Company.dart';
 
+
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
 String userModelToJson(UserModel data) => json.encode(data.toJson());

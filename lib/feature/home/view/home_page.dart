@@ -1,10 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:user_app/core/theme/app_colors.dart';
 import 'package:user_app/data/model/User_model.dart';
 import 'package:user_app/data/repository/home_repository.dart';
 import 'package:user_app/feature/home/widgets/user_info_card.dart';
+import 'package:user_app/feature/todo/view/todo_page.dart';
 
 import '../../../utils/generated/l10n.dart';
 
@@ -25,10 +24,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<List<UserModel>?> apiCall() async {
-    log("message :  i am in home page ");
-    HomeRepository homeRepository = HomeRepository();
-    final List<UserModel>? listUser = await homeRepository.getAllUserModel();
-    log("here you list of user : ${listUser?.first.toString()}");
+    final List<UserModel>? listUser = await HomeRepository.getAllUserModel();
     return listUser;
   }
 
@@ -67,11 +63,14 @@ class _HomePageState extends State<HomePage> {
       ),
       actions: [
         GestureDetector(
-          onTap: (){
-            print("object");
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TodoPage()),
+            );
           },
           child: Icon(Icons.task),
-        )
+        ),
       ],
     );
   }

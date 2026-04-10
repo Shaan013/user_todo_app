@@ -1,14 +1,14 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
+import 'package:user_app/data/model/Todos_model.dart';
 import 'package:user_app/data/model/User_model.dart';
 import 'package:user_app/data/network/network_service.dart';
 
 class HomeRepository {
-  Future<List<UserModel>?> getAllUserModel() async {
+  static Future<List<UserModel>?> getAllUserModel() async {
     NetworkService networkService = NetworkService();
     final Response response = await networkService.getAllUsers();
-
     if (response.statusCode != 200) {
       log(" SUTATUS : ${response.statusCode}");
       return null;
@@ -19,5 +19,16 @@ class HomeRepository {
         .toList();
     log(data.runtimeType.toString());
     return listOfUser;
+  }
+
+  static Future<TodosModel?> getAllTodos() async {
+    NetworkService networkService = NetworkService();
+    final Response response = await networkService.getAllTodos();
+    if (response.statusCode != 200) {
+      log(" SUTATUS : ${response.statusCode}");
+      return null;
+    }
+    final TodosModel todosModel = TodosModel.fromJson(response.data);
+    return todosModel;
   }
 }
