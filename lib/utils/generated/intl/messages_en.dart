@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "headingExecutiveNetwork": MessageLookupByLibrary.simpleMessage(
       "Executive Network",
     ),
+    "headingTodos": MessageLookupByLibrary.simpleMessage("Todos"),
     "msgApiCouldNotFetchDate": MessageLookupByLibrary.simpleMessage(
       "Api Could Not Fetch Date",
     ),

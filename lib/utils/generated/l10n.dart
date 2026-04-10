@@ -153,6 +153,11 @@ class S {
       args: [],
     );
   }
+
+  /// `Todos`
+  String get headingTodos {
+    return Intl.message('Todos', name: 'headingTodos', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

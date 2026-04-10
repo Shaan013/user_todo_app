@@ -9,5 +9,6 @@
   "titleWebsite": "WEBSITE",
   "msgApiCouldNotFetchDate": "Api Could Not Fetch Date",
   "errorSomethingWentWrong": "Something went wrong",
-  "erroryouDateIsNull": "You Date is Null"
+  "erroryouDateIsNull": "You Date is Null",
+  "headingTodos": "Todos"
 }
