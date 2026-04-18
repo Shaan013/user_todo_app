@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:user_app/core/theme/app_theme.dart';
+import 'package:user_app/data/service/get_it_services.dart';
 import 'package:user_app/feature/home/view/home_page.dart';
 import 'package:user_app/utils/generated/l10n.dart';
 
 void main() {
+  setupSl();
   runApp(const MyApp());
 }
 

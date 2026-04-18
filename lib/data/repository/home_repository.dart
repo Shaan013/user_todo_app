@@ -5,7 +5,7 @@ import 'package:user_app/data/model/Todos_model.dart';
 import 'package:user_app/data/model/User_model.dart';
 import 'package:user_app/data/network/network_service.dart';
 
-class HomeRepository {
+  class HomeRepository {
   static Future<List<UserModel>?> getAllUserModel() async {
     NetworkService networkService = NetworkService();
     final Response response = await networkService.getAllUsers();

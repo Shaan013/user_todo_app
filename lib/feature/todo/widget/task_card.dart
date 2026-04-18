@@ -26,8 +26,8 @@ class TaskCard extends StatelessWidget {
                 style: textTheme.titleLarge!.copyWith(
                   decoration:
                       (task.completed == null || task.completed == false)
-                      ? .lineThrough
-                      : null,
+                      ? null
+                      : .lineThrough,
                   decorationStyle: .solid,
                   decorationThickness: 2,
                 ),
